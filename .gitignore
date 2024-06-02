@@ -1,0 +1,10 @@
+/php/*/*
+/python/*/*
+/frontend/
+.bash_history
+.envrc
+.env
+configurationCache.log
+dryrun.log
+targets.log
+*.pem

@@ -1,6 +1,7 @@
-# Fast APIの環境構築
-- [Next.jsのdocker-compose環境構築手順](#nextjsのdocker-compose環境構築手順)
+# FastAPIの環境構築
+- [FastApiのdocker-compose環境構築手順](#FastApiのdocker-compose環境構築手順)
 - [make自動化スクリプト実行手順](#make自動化スクリプト実行手順)
+- [開発時に使用するコマンド](#開発時に使用するコマンド)
 
 ## Fast APIのdocker-compose環境構築手順
 1. ルートディレクトリ直下の`.envrc.example`を.envrcにリネームしてポート設定やプロジェクト名などの設定を編集をする。<br>
@@ -26,26 +27,15 @@
 	```
 	. ./install.sh
 	```
-5. .envrc定義情報の以下ポートにアクセスできる。<br>
- **補足**<br>
- proxy service 公開側ポートは.devcontainer/python直下に存在するnext.config.js.example内容をnext.config.jsに上書きしnpm run buildを実行すること。
-	```
-	# PhpMyadmin servic 公開側ポート
-	export PHP_MYADMIN_PUBLIC_PORT=
-	# proxy service 公開側ポート npm run build
-	export PROXY_PUBLIC_PORT=
-	# 開発サーバーのポート npm run dev
-	export PYTHON_PORT=
-	```
-
-6. docker-composeの環境を一旦削除して初期状態に戻したい場合は以下を実行する。
+5. docker-composeの環境を一旦削除して初期状態に戻したい場合は以下を実行する。
     ```
     make container-remove 
     ```
 
 ## 開発時に使用するコマンド
+コンテナ内で以下を実行する
+
 - venvを有効化
 `venv/bin/activate`
 - 開発サーバー立ち上げ
 ` uvicorn main:app --host 0.0.0.0 --reload`
-# python_fastapi_env
