@@ -1,7 +1,8 @@
 # FastAPIの環境構築
-- [FastApiのdocker-compose環境構築手順](#FastApiのdocker-compose環境構築手順)
-- [make自動化スクリプト実行手順](#make自動化スクリプト実行手順)
-- [開発時に使用するコマンド](#開発時に使用するコマンド)
+- [FastAPIの環境構築](#fastapiの環境構築)
+	- [Fast APIのdocker-compose環境構築手順](#fast-apiのdocker-compose環境構築手順)
+	- [make自動化スクリプト実行手順](#make自動化スクリプト実行手順)
+	- [開発時に使用するコマンド](#開発時に使用するコマンド)
 
 ## Fast APIのdocker-compose環境構築手順
 1. ルートディレクトリ直下の`.envrc.example`を.envrcにリネームしてポート設定やプロジェクト名などの設定を編集をする。<br>
@@ -38,4 +39,4 @@
 - venvを有効化
 `venv/bin/activate`
 - 開発サーバー立ち上げ
-` uvicorn main:app --host 0.0.0.0 --reload`
+`uvicorn main:app --host 0.0.0.0 --reload`

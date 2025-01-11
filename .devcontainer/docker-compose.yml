@@ -1,4 +1,3 @@
-version: '3'
 services:
   proxy:
     # platform: linux/x86_64 
@@ -72,10 +71,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ${VOLUME_PATH}/:/home/${USER}
+      - ${VOLUME_PATH}/:/home/root
       # - ${VOLUME_PATH}/:/home/
     tty: true
     environment:
       PASSWORD: ${PASSWORD}
-    working_dir: /home/${USER}
-    command: /bin/bash -c "cd /home/${USER}/${PROJECT_NAME} && exec /bin/bash"
