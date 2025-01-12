@@ -17,8 +17,7 @@ server {
     access_log /dev/stdout;
     error_log  /dev/stderr;
 
-    # Next.js index.htmlが配置されるフォルダのパス # buildで生成する場合
-    root   /var/www/html/${PROJECT_NAME}/out;
+    root   /var/www/html/${PROJECT_NAME}/templates;
 
 	# 静的ファイルを配置する場合
     location / {

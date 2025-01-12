@@ -71,8 +71,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ${VOLUME_PATH}/:/home/root
-      # - ${VOLUME_PATH}/:/home/
+      - ${VOLUME_PATH}/:/var/www/html
     tty: true
     environment:
       PASSWORD: ${PASSWORD}

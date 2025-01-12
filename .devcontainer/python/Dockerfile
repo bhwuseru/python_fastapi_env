@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 
 # コンテナ内の環境変数を定義するための引数
 ARG PROJECT_NAME
@@ -10,13 +10,22 @@ ENV PROJECT_NAME=${PROJECT_NAME}
 ENV USER=${USER}
 ENV PASSWORD=${PASSWORD}
 
-# ユーザーをルートに切り替える
-USER root
-# Bashをインストール
-RUN apk add --no-cache bash
-# sudoをインストール
-RUN apk add --no-cache sudo
 
-WORKDIR /home/root
+# システム依存パッケージをインストール
+RUN apt-get update && apt-get install -y \
+    python3 python3-venv python3-pip ffmpeg git 
 
-CMD ["bash"]
+# 必要なライブラリのインストール
+RUN 
+RUN pip install fastapi uvicorn jinja2 python-multipart
+
+# Real-ESRGANをクローン
+RUN git clone https://github.com/xinntao/Real-ESRGAN.git /var/www/html/Real-ESRGAN
+WORKDIR /var/www/html/Real-ESRGAN
+
+# RIFEをクローン
+RUN git clone https://github.com/megvii-research/ECCV2022-RIFE.git /var/www/html/RIFE
+WORKDIR /var/www/html/RIFE
+
+# FastAPI Web UI
+WORKDIR /var/www/html

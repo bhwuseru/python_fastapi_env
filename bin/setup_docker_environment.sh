@@ -21,6 +21,8 @@ if [ ! -e "${VOLUME_PATH}/install.sh" ]; then
     chmod +x "${PROJECT_NAME_DIR_PATH}/python/install.sh"
     # install.shをボリューム先ディレクトリパスにコピーする
     cp "${PROJECT_NAME_DIR_PATH}/python/install.sh" "${VOLUME_PATH}/"
+    cp "${PROJECT_NAME_DIR_PATH}/python/main.py" "${VOLUME_PATH}/"
+    cp "${PROJECT_NAME_DIR_PATH}/python/start_app.sh" "${VOLUME_PATH}/"
 fi
 
 cd ."${PROJECT_NAME}" || return

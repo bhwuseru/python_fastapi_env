@@ -3,6 +3,7 @@
 	- [Fast APIのdocker-compose環境構築手順](#fast-apiのdocker-compose環境構築手順)
 	- [make自動化スクリプト実行手順](#make自動化スクリプト実行手順)
 	- [開発時に使用するコマンド](#開発時に使用するコマンド)
+	- [コンテナ内で以下を実行する](#コンテナ内で以下を実行する)
 
 ## Fast APIのdocker-compose環境構築手順
 1. ルートディレクトリ直下の`.envrc.example`を.envrcにリネームしてポート設定やプロジェクト名などの設定を編集をする。<br>
@@ -34,9 +35,16 @@
     ```
 
 ## 開発時に使用するコマンド
-コンテナ内で以下を実行する
 
-- venvを有効化
+- プロジェクトルートディレクトで以下のスクリプトを実行後に
+.envrc `export PYTHON_PORT`のポートにアクセスすると開発環境にアクセスできる。
+
+1. `. ./start_app.sh`
+2. http://localhost:PYTHON_PORT
+
+## コンテナ内で以下を実行する
+
+1. venvを有効化
 `venv/bin/activate`
-- 開発サーバー立ち上げ
+2. 開発サーバー立ち上げ
 `uvicorn main:app --host 0.0.0.0 --reload`
