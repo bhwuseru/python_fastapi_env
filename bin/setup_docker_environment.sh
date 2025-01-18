@@ -23,6 +23,7 @@ if [ ! -e "${VOLUME_PATH}/install.sh" ]; then
     cp "${PROJECT_NAME_DIR_PATH}/python/install.sh" "${VOLUME_PATH}/"
     cp "${PROJECT_NAME_DIR_PATH}/python/main.py" "${VOLUME_PATH}/"
     cp "${PROJECT_NAME_DIR_PATH}/python/start_app.sh" "${VOLUME_PATH}/"
+    cat "${PROJECT_NAME_DIR_PATH}/python/.envrc.example" > "${VOLUME_PATH}/.envrc"
 fi
 
 cd ."${PROJECT_NAME}" || return

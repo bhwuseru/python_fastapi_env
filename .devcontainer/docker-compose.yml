@@ -1,6 +1,6 @@
 services:
   proxy:
-    # platform: linux/x86_64 
+    # platform: linux/x86_64
     build:
       context: ./proxy
     container_name: ${APP_NAME}-proxy
@@ -56,7 +56,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       TZ: Asia/Tokyo
   python:
-    # platform: linux/x86_64 
     build:
       context: ./python
       args:
@@ -64,6 +63,12 @@ services:
         USER: ${USER}
         PASSWORD: ${PASSWORD}
     container_name: ${APP_NAME}-python
+    runtime: nvidia # NVIDIA ランタイムを指定
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu] # GPU を利用可能にする
     ports:
       - ${PYTHON_PORT}:8000
     expose:
@@ -75,3 +80,5 @@ services:
     tty: true
     environment:
       PASSWORD: ${PASSWORD}
+      NVIDIA_VISIBLE_DEVICES: all # 全 GPU を使用可能にする
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility # 必要なドライバ機能を指定

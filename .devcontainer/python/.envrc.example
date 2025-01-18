@@ -1,0 +1,11 @@
+# 仮想環境のパスを指定
+export VIRTUAL_ENV=$(pwd)/venv
+
+# PATHに仮想環境のbinディレクトリを追加
+export PATH=$VIRTUAL_ENV/bin:$PATH
+
+# Pythonパッケージ検索パスを設定
+export PYTHONPATH=$(pwd)
+
+# venv実行
+. "${VIRTUAL_ENV}/bin/activate"
